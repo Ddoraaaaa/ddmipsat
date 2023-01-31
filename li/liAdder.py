@@ -1,1 +1,1 @@
-from ..cc.ccAdder import ccEncodeExpression
+from cc.ccAdder import ccEncodeExpression

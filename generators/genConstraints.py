@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 from collections import defaultdict
 from random import randint, shuffle
 from math import floor
-from ..utils.ddutils import getNextAvail
+from utils.ddutils import getNextAvail
 
 def getSizes(n, m, sumQ):
     res = []
@@ -12,7 +14,7 @@ def getSizes(n, m, sumQ):
     return res
 
 
-def genYXSet(n, m, sumQ, avail):
+def genXYSet(n, m, sumQ, avail):
     sumQ = min(sumQ, n * m)
     xList = []
     yList = []
@@ -29,7 +31,7 @@ def genYXSet(n, m, sumQ, avail):
         shuffle(xList)
         yConnected.append(xList[0:ySizeList[i]])
 
-    return xList, yList, yConnected
+    return xList, yList, yConnected, avail
 
     
 
