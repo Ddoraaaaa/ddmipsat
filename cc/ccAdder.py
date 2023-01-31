@@ -1,4 +1,4 @@
-from ..utils.ddutils import getNextAvail, compareLess
+from utils.ddutils import getNextAvail, compareLess
 
 # half adder for 2 bits
 # return [(clauses)], [z0, 2z1], avail
