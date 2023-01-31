@@ -1,3 +1,12 @@
+def getSize(obj):
+    res = 0
+    if type(obj) == int:
+        return 1
+    for i in obj:
+        res += getSize(i)
+    return res
+
+
 # return next available node index and update `avail`
 # if `avail` is integer return that number
 # if `avail` is list return first item
