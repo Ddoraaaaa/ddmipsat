@@ -1,5 +1,7 @@
-from ddutils import getNextAvail
+from .ddutils import getNextAvail
 from collections import defaultdict as dd
+
+import time
 
 def removeVal(cntPair, groups, val1, val2):
     for group in groups:
@@ -20,7 +22,7 @@ def addVal(cntPair, groups, val, toAdd):
         group.append(val)
 
 
-def partitionGroups(groups, avail):
+def partitionGroups(groups, avail, timeOut = 5):
     # print("lmao", groups, avail)
     resList = []
     cntPair = dd(lambda: 0)
@@ -34,7 +36,7 @@ def partitionGroups(groups, avail):
 
     while True:
         (u, v) = max(cntPair, key=cntPair.get)
-        if cntPair[(u, v)] == 0:
+        if cntPair[(u, v)] <= 2:
             break
         newVal, avail = getNextAvail(avail)
 
@@ -49,5 +51,12 @@ def partitionGroups(groups, avail):
 
         addVal(cntPair, groups, newVal, toAdd)
 
+    for group in groups:
+        while len(group) > 1:
+            newVal, avail = getNextAvail(avail)
+            resList.append((newVal, group[-1], group[-2]))
+            group.pop()
+            group[-1] = newVal
+
     # print(groups, resList)
-    return [group[0] for group in groups], resList, avail
+    return [group[0] if len(group) == 1 else None for group in groups], resList, avail
