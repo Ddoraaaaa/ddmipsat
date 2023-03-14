@@ -258,4 +258,4 @@ def ccAddBitsLoose(bitlist, avail):
 
         i += 1
 
-    return answer, clauses
+    return answer, clauses, avail

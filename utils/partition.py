@@ -36,7 +36,7 @@ def partitionGroups(groups, avail, timeOut = 5):
 
     while True:
         (u, v) = max(cntPair, key=cntPair.get)
-        if cntPair[(u, v)] <= 2:
+        if cntPair[(u, v)] == 1:
             break
         newVal, avail = getNextAvail(avail)
 
